@@ -32,3 +32,19 @@ E = S;
 hold on
 impulse(E);
 
+%%
+syms Fe
+A = ([(s^2 + s + 1) -(s+1); -(s+1) (s^2 + s +1)]);
+B = [Fe;0];
+X = inv(A)*B;
+pretty(X)
+
+S = tf([1 1], [1 2 2 0 0]);
+step(S);
+hold on
+impulse(S);
+[u,t] = gensig("sine",1,4,0.05);
+figure
+lsim(S,u,t);
+
+
